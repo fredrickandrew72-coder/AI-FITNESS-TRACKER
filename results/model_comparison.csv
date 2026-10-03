@@ -1,0 +1,5 @@
+model,pretrained_weights,precision,recall,f1_derived_from_P_and_R,mAP50,mAP50_95,inference_ms_per_image,total_ms_per_image_pre_inf_post,parameters,best_pt_size_mb,peak_gpu_mem_gb,training_time_min,epochs_completed,epochs_max,best_epoch,stopped_early,status,evaluation_set,test_used,gpu,seed
+YOLOv8n,yolov8n.pt,0.6403817567431148,0.6830472116411868,0.6610267476059245,0.7187152131316612,0.43914428522652404,4.071,5.935,3326166,6.57,2.2,54.31,100,100,80,False,completed,valid_clean (495 images),False,Tesla T4,0
+YOLOv8s,yolov8s.pt,0.6445075660701168,0.7068185994309986,0.6742264699705999,0.7523720826719215,0.4626283334964761,9.125,10.709,11173526,21.55,3.51,62.3,81,100,51,True,completed,valid_clean (495 images),False,Tesla T4,0
+YOLO11n,yolo11n.pt,0.6588614310124975,0.7016842894271923,0.679598940492174,0.7513283301494833,0.45728333626450585,4.053,5.838,2652232,5.35,2.48,56.54,100,100,87,False,completed,valid_clean (495 images),False,Tesla T4,0
+YOLO11s,yolo11s.pt,0.6942904164671383,0.6879733018222408,0.691117424150517,0.7516805434010467,0.4655585791967451,9.414,11.046,9465718,18.37,4.05,75.27,93,100,63,True,completed,valid_clean (495 images),False,Tesla T4,0

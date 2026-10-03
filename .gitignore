@@ -1,0 +1,53 @@
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+npm-debug.log*
+dist/
+build/
+
+# YOLO / ML generated files
+runs/
+*.pt
+*.onnx
+*.engine
+*.weights
+
+# Kaggle generated files
+kaggle/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Large/generated datasets
+*.zip
+*.tar
+*.tar.gz
+
+# Logs
+*.log
+# Raw datasets - keep local, document download sources instead
+data/raw/
+
+# Large processed datasets
+data/processed/*.csv
+!data/processed/indian_food_nutrition.csv
+!data/processed/indian_recipe_nutrition.csv

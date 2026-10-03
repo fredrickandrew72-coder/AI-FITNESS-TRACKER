@@ -1,0 +1,64 @@
+{
+  "model": "yolo11s",
+  "checkpoint": "/kaggle/working/runs/yolo11s/weights/best.pt",
+  "pretrained_weights": "yolo11s.pt",
+  "ultralytics": "8.4.171",
+  "torch": "2.10.0+cu128",
+  "gpu": "Tesla T4",
+  "evaluation": {
+    "split": "test_clean (leakage-reduced, 353 of 518 test images)",
+    "test_list": "/kaggle/working/outputs/test_clean.txt",
+    "images_evaluated": 353,
+    "annotation_instances_in_label_files": 364,
+    "instances_seen_by_validator": 364,
+    "imgsz": 640,
+    "batch": 16,
+    "seed": 0,
+    "used_for_training": false,
+    "used_for_model_selection": false,
+    "note": "Checkpoint was chosen on valid_clean before this evaluation; the test split was not used in training or selection."
+  },
+  "metrics": {
+    "precision_mean": 0.6343521573342487,
+    "recall_mean": 0.6532710941308773,
+    "f1_derived_from_precision_and_recall": 0.643672638583524,
+    "f1_note": "F1 = 2PR/(P+R) from mean precision and mean recall; NOT an independently reported Ultralytics metric.",
+    "mAP50": 0.7198470226124578,
+    "mAP50_95": 0.43778089279756255
+  },
+  "speed_ms_per_image": {
+    "preprocess": 0.875,
+    "inference": 9.873,
+    "loss": 0.001,
+    "postprocess": 0.803
+  },
+  "parameters_98cls": 9465718,
+  "best_pt_size_mb": 18.37,
+  "peak_gpu_mem_gb_during_eval": 0.83,
+  "evaluation_wallclock_seconds": 6.1,
+  "valid_clean_reference": {
+    "precision_mean": 0.6942904164671383,
+    "recall_mean": 0.6879733018222408,
+    "f1_derived": 0.691117424150517,
+    "mAP50": 0.7516805434010467,
+    "mAP50_95": 0.4655585791967451
+  },
+  "caveats": [
+    "Single seed, single checkpoint, 353 images / about 364 instances: metrics carry substantial sampling uncertainty.",
+    "Test set is leakage-reduced (dHash <= 5), not guaranteed leak-free.",
+    "Many classes have very few test instances; mean P/R/mAP are averaged over classes with ground truth only."
+  ],
+  "checks": {
+    "yaml test points to test_clean.txt": true,
+    "exactly 353 test images listed": true,
+    "no duplicate paths": true,
+    "all images exist": true,
+    "all images live in dataset test/images": true,
+    "all label files exist": true,
+    "no overlap with the 495 valid_clean images (selection set)": true,
+    "Ultralytics resolves yaml (nc == 98)": true,
+    "validator instance count == 364 (from label files)": true,
+    "validator ran with a test dataset of 353 images (list verified above)": true
+  },
+  "ultralytics_output_dir": "/kaggle/working/runs/yolo11s/test_best_test_clean"
+}
