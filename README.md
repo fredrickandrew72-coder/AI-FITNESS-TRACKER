@@ -1,159 +1,176 @@
-# Food Detection Model Evaluation
+# AI Fitness & Nutrition Assistant
 
-## Overview
+> A multimodal, context-aware AI system for food recognition, nutrition analysis, fitness tracking, and personalized dietary recommendations for college and hostel students.
 
-This directory documents the food detection model experiments used in the AI Fitness & Nutrition Assistant project.
+**Project Status:** 🚧 In Development  
+**Current Completed Stage:** Food Detection Model Development and Evaluation
 
-The food detection component identifies Indian/Tamil food items from images and provides the detected food classes to the downstream nutrition analysis pipeline.
+---
 
-## Dataset
+## 📌 Project Overview
 
-**Dataset:** Tamil and Indian Food Detection Dataset 2
+The **AI Fitness & Nutrition Assistant** is an AI-based system designed to help college and hostel students monitor their food intake, understand nutrition, track fitness-related information, and receive personalized dietary recommendations.
 
-* Number of classes: **98**
-* Training images: **3,672**
-* Clean validation images: **495**
-* Clean test images: **353**
-* Test annotation instances: **364**
+The system is designed around a practical problem faced by students: food is often consumed from hostel messes, college canteens, restaurants, and outside-food sources, making accurate and consistent food logging difficult.
 
-The clean validation set was used for model comparison and checkpoint selection. The clean test set was kept untouched until the final evaluation.
+Instead of requiring users to manually search for every food item and enter its nutritional information, the proposed system aims to understand food through **images and natural-language input**, retrieve relevant nutritional information, consider the user's fitness goals and activity, and provide personalized recommendations.
 
-## Models Compared
+The project combines:
 
-Four YOLO models were trained using the same experimental protocol.
+- Computer Vision
+- Food Object Detection
+- Vision-Language Models (VLM)
+- Natural Language Processing
+- Nutrition Knowledge Retrieval
+- Retrieval-Augmented Generation (RAG)
+- Machine Learning
+- Personalized Recommendation
 
-| Model   | Precision | Recall |     F1 |  mAP50 | mAP50-95 | Inference |
-| ------- | --------: | -----: | -----: | -----: | -------: | --------: |
-| YOLOv8n |    0.6404 | 0.6830 | 0.6610 | 0.7187 |   0.4391 |  4.071 ms |
-| YOLOv8s |    0.6445 | 0.7068 | 0.6742 | 0.7524 |   0.4626 |  9.125 ms |
-| YOLO11n |    0.6589 | 0.7017 | 0.6796 | 0.7513 |   0.4573 |  4.053 ms |
-| YOLO11s |    0.6943 | 0.6880 | 0.6911 | 0.7517 |   0.4656 |  9.414 ms |
+The current development stage focuses on the **food detection component**, where multiple YOLO models have been trained and experimentally evaluated.
 
-Model comparison was performed on the same **495-image clean validation set**.
+---
 
-## Selected Model
+# 🎯 Problem Statement
 
-**YOLO11s** was selected based on the clean validation evaluation.
+Maintaining a proper diet and fitness routine can be difficult for college and hostel students.
 
-Validation results:
+Students frequently depend on:
 
-* Precision: **0.6943**
-* Recall: **0.6880**
-* F1: **0.6911**
-* mAP50: **0.7517**
-* mAP50-95: **0.4656**
-* Inference time: **9.414 ms/image**
-* Parameters: **9,465,718**
-* Best checkpoint size: **18.37 MB**
+- Hostel/mess food
+- College canteens
+- Restaurants
+- Fast food
+- Outside food
+- Frequently changing menus
 
-The selected checkpoint was Ultralytics' internal `best.pt`.
+Existing calorie-counting and nutrition applications often depend heavily on manual food entry. Users may need to search for the food item, determine the quantity, and enter nutritional information themselves.
 
-## Final Test Evaluation
+This creates several challenges:
 
-After model selection, YOLO11s was evaluated once on the untouched clean test set.
+- Manual food logging is time-consuming.
+- Indian and regional foods may not always be represented accurately.
+- Students may not know the nutritional composition of their meals.
+- Hostel and mess menus change frequently.
+- Food consumed outside the hostel may be difficult to log.
+- Nutrition information is often separated from fitness activity and user goals.
+- Generic recommendations may not account for individual requirements.
 
-Test results:
+### Proposed Problem
 
-| Metric         |             Result |
-| -------------- | -----------------: |
-| Precision      |         **0.6344** |
-| Recall         |         **0.6533** |
-| F1             |         **0.6437** |
-| mAP50          |         **0.7198** |
-| mAP50-95       |         **0.4378** |
-| Inference      | **9.873 ms/image** |
-| Test images    |            **353** |
-| Test instances |            **364** |
+The project aims to develop an intelligent system that can automatically understand food inputs, retrieve nutritional information, consider user context and fitness goals, and provide personalized nutrition assistance.
 
-The final evaluation was performed without modifying the test dataset or using it for model selection.
+The system therefore investigates the following research direction:
 
-## Validation vs Test
+> **Can a multimodal AI system combine food image understanding, nutrition knowledge retrieval, user context, and fitness information to provide practical and personalized nutrition assistance for college and hostel students?**
 
-| Metric    | Validation |   Test | Difference |
-| --------- | ---------: | -----: | ---------: |
-| Precision |     0.6943 | 0.6344 |    -0.0599 |
-| Recall    |     0.6880 | 0.6533 |    -0.0347 |
-| F1        |     0.6911 | 0.6437 |    -0.0474 |
-| mAP50     |     0.7517 | 0.7198 |    -0.0318 |
-| mAP50-95  |     0.4656 | 0.4378 |    -0.0278 |
+---
 
-## Training Protocol
+# 💡 Proposed Solution
 
-The models were evaluated under a common experimental protocol:
+The proposed system follows a multimodal pipeline where users can provide information through different inputs.
 
-* Maximum epochs: **100**
-* Patience: **30**
-* Image size: **640**
-* Batch size: **16**
-* Seed: **0**
-* GPU: **NVIDIA Tesla T4**
-* Ultralytics version: **8.4.171**
-* Pretrained models: **Yes**
-* Training dataset: **3,672 images**
-* Model-selection dataset: **495 clean validation images**
-* Final evaluation dataset: **353 clean test images**
+### Possible Inputs
 
-The same protocol was used for the four model comparisons.
+- Food images
+- Natural-language food descriptions
+- Hostel/mess menu images
+- Restaurant or outside-food information
+- Fitness/activity information
+- User goals and preferences
 
-## Evaluation Integrity
+The system processes these inputs and produces:
 
-The test set was kept separate from model selection.
+- Food identification
+- Nutritional information
+- Calorie estimation
+- Macronutrient information
+- Micronutrient information where available
+- Personalized nutrition suggestions
+- Fitness-oriented food recommendations
 
-Before final evaluation, the clean test set was checked for:
-
-* Image and label existence
-* Correct dataset configuration
-* Duplicate images
-* Validation/test overlap
-* Number of images
-* Number of annotation instances
-* Correct test YAML configuration
-
-The final validator processed exactly **353 test images and 364 annotation instances**.
-
-## Result Files
-
-The reproducible lightweight evaluation outputs are stored in the `results/` directory:
+### High-Level Architecture
 
 ```text
-results/
-├── model_comparison.csv
-├── model_comparison.json
-└── yolo11s_test_clean_eval_summary.json
-```
+                         USER
+                           |
+          +----------------+----------------+
+          |                |                |
+      Food Image       Text Input      Menu Image
+          |                |                |
+          +----------------+----------------+
+                           |
+                           v
+                  Food Understanding
+                           |
+              +------------+------------+
+              |                         |
+         YOLO11s                    VLM/NLP
+      Food Detection           Future Integration
+              |                         |
+              +------------+------------+
+                           |
+                           v
+                  Detected Food Items
+                           |
+                           v
+             Nutrition Knowledge Layer
+                  Database + RAG
+                           |
+                           v
+              Nutritional Analysis
+                           |
+          +----------------+----------------+
+          |                |                |
+       Calories       Macronutrients   Micronutrients
+          |                |                |
+          +----------------+----------------+
+                           |
+                           v
+                   User Context
+                           |
+          +----------------+----------------+
+          |                |                |
+      Fitness Goal      Activity       Preferences
+          |                |                |
+          +----------------+----------------+
+                           |
+                           v
+             Personalized Recommendation
+                           |
+                           v
+              AI Fitness Assistant
 
-These files contain the model comparison and final test evaluation information.
 
-## Model Weights
 
-The trained `.pt` model weights are intentionally not included in the normal Git repository.
+🧠 AI/ML Approach
+The project is designed as a combination of multiple AI components.
+1. Food Detection
+The first major component is automatic food detection from images.
+The current implementation uses YOLO-based object detection.
+The following models were trained and compared:
+- YOLOv8n
+- YOLOv8s
+- YOLO11n
+- YOLO11s
+The models were evaluated using the same experimental protocol to provide a fair comparison.
 
-Model checkpoints are larger binary artifacts and can be stored separately using a model-artifact repository or Git LFS when required.
 
-The final selected checkpoint was:
+2. Vision-Language Model
+A Vision-Language Model is planned as part of the broader multimodal system for understanding complex food images and menu images.
+The VLM component is intended to help with cases where simple object detection may not be sufficient, such as:
+- Understanding menu images
+- Interpreting food descriptions
+- Handling complex meal images
+- Extracting contextual information from images
+The complete VLM pipeline is part of the future integration stage.
 
-```text
-runs/yolo11s/weights/best.pt
-```
-
-Size: approximately **18.37 MB**.
-
-## Next Stage
-
-The completed YOLO11s food detection model will be integrated into the AI Fitness & Nutrition Assistant pipeline:
-
-```text
-Food Image
-    ↓
-YOLO11s Food Detection
-    ↓
-Detected Food + Confidence
-    ↓
-Nutrition Database / RAG
-    ↓
-Calories + Macronutrients + Micronutrients
-    ↓
-User Profile + Activity + Fitness Goal
-    ↓
-Personalized Nutrition Recommendation
-```
+3. Nutrition Knowledge Retrieval
+After food items are identified, the system retrieves nutritional information from the project's nutrition data sources.
+The nutrition layer is intended to provide information such as:
+- Calories
+- Protein
+- Carbohydrates
+- Fat
+- Fiber
+- Micronutrients
+Processed nutrition datasets are already included in the project.
