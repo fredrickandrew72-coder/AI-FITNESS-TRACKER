@@ -1,0 +1,171 @@
+{
+  "project": "AI Fitness & Nutrition Assistant",
+  "component": "Food Detection",
+  "training_summary": [
+    {
+      "Model": "yolov8n",
+      "Epochs Completed": 100,
+      "Best Epoch": 80,
+      "Precision": 0.64071,
+      "Recall": 0.68399,
+      "F1": 0.6616429876953273,
+      "mAP50": 0.71903,
+      "mAP50-95": 0.43941,
+      "Total Training Time (sec)": 3125.97,
+      "Total Training Time (min)": 52.0995,
+      "Average Epoch Time (sec)": 31.2597
+    },
+    {
+      "Model": "yolov8s",
+      "Epochs Completed": 81,
+      "Best Epoch": 51,
+      "Precision": 0.64519,
+      "Recall": 0.70664,
+      "F1": 0.674518336773115,
+      "mAP50": 0.75182,
+      "mAP50-95": 0.46239,
+      "Total Training Time (sec)": 3659.23,
+      "Total Training Time (min)": 60.98716666666667,
+      "Average Epoch Time (sec)": 45.17567901234568
+    },
+    {
+      "Model": "yolo11n",
+      "Epochs Completed": 100,
+      "Best Epoch": 87,
+      "Precision": 0.65835,
+      "Recall": 0.70201,
+      "F1": 0.6794793782528155,
+      "mAP50": 0.75097,
+      "mAP50-95": 0.45777,
+      "Total Training Time (sec)": 3288.45,
+      "Total Training Time (min)": 54.8075,
+      "Average Epoch Time (sec)": 32.8845
+    },
+    {
+      "Model": "yolo11s",
+      "Epochs Completed": 93,
+      "Best Epoch": 63,
+      "Precision": 0.68881,
+      "Recall": 0.68962,
+      "F1": 0.689214762011854,
+      "mAP50": 0.75092,
+      "mAP50-95": 0.46514,
+      "Total Training Time (sec)": 4393.29,
+      "Total Training Time (min)": 73.2215,
+      "Average Epoch Time (sec)": 47.23967741935484
+    }
+  ],
+  "validation_model_comparison": [
+    {
+      "model": "YOLOv8n",
+      "precision": 0.6404,
+      "recall": 0.683,
+      "f1": 0.661,
+      "mAP50": 0.7187,
+      "mAP50-95": 0.4391,
+      "inference_ms": 4.071,
+      "parameters": 3326166,
+      "best_model_size_mb": 6.57,
+      "peak_gpu_gb": 2.2,
+      "training_time_min": 54.31
+    },
+    {
+      "model": "YOLOv8s",
+      "precision": 0.6445,
+      "recall": 0.7068,
+      "f1": 0.6742,
+      "mAP50": 0.7524,
+      "mAP50-95": 0.4626,
+      "inference_ms": 9.125,
+      "parameters": 11173526,
+      "best_model_size_mb": 21.55,
+      "peak_gpu_gb": 3.51,
+      "training_time_min": 62.3
+    },
+    {
+      "model": "YOLO11n",
+      "precision": 0.6589,
+      "recall": 0.7017,
+      "f1": 0.6796,
+      "mAP50": 0.7513,
+      "mAP50-95": 0.4573,
+      "inference_ms": 4.053,
+      "parameters": 2652232,
+      "best_model_size_mb": 5.35,
+      "peak_gpu_gb": 2.48,
+      "training_time_min": 56.54
+    },
+    {
+      "model": "YOLO11s",
+      "precision": 0.6943,
+      "recall": 0.688,
+      "f1": 0.6911,
+      "mAP50": 0.7517,
+      "mAP50-95": 0.4656,
+      "inference_ms": 9.414,
+      "parameters": 9465718,
+      "best_model_size_mb": 18.37,
+      "peak_gpu_gb": 4.05,
+      "training_time_min": 75.27
+    }
+  ],
+  "final_test_evaluation": {
+    "model": "YOLO11s",
+    "test_images": 353,
+    "test_instances": 364,
+    "precision": 0.6344,
+    "recall": 0.6533,
+    "f1": 0.6437,
+    "mAP50": 0.7198,
+    "mAP50-95": 0.4378,
+    "inference_ms_per_image": 9.873,
+    "evaluation_time_seconds": 6.1,
+    "parameters": 9465718,
+    "best_model_size_mb": 18.37,
+    "peak_gpu_gb": 0.83
+  },
+  "experimental_protocol": {
+    "training_images": 3672,
+    "clean_validation_images": 495,
+    "clean_test_images": 353,
+    "test_annotation_instances": 364,
+    "classes": 98,
+    "max_epochs": 100,
+    "patience": 30,
+    "image_size": 640,
+    "batch_size": 16,
+    "seed": 0,
+    "gpu": "NVIDIA Tesla T4",
+    "ultralytics_version": "8.4.171",
+    "pretrained": true,
+    "selected_model": "YOLO11s",
+    "selection_basis": "Clean validation evaluation"
+  },
+  "yolo11s_validation_vs_test": {
+    "precision": {
+      "validation": 0.6943,
+      "test": 0.6344,
+      "difference": -0.0599
+    },
+    "recall": {
+      "validation": 0.688,
+      "test": 0.6533,
+      "difference": -0.0347
+    },
+    "f1": {
+      "validation": 0.6911,
+      "test": 0.6437,
+      "difference": -0.0474
+    },
+    "mAP50": {
+      "validation": 0.7517,
+      "test": 0.7198,
+      "difference": -0.0319
+    },
+    "mAP50-95": {
+      "validation": 0.4656,
+      "test": 0.4378,
+      "difference": -0.0278
+    }
+  }
+}
