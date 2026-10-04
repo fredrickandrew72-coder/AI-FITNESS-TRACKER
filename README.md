@@ -237,6 +237,98 @@ All four models were trained/evaluated using a common protocol:
 - Test images: 353
 The test set was checked for image/label existence, duplicates, validation/test overlap, dataset configuration, image count, and annotation count.
 
+## Experimental Evidence
+
+The repository contains the experimental evidence generated during food-detection model development.
+
+### Training Evidence
+
+The four candidate models were trained under the same experimental protocol:
+
+- YOLOv8n
+- YOLOv8s
+- YOLO11n
+- YOLO11s
+
+For each model, the repository contains epoch-level training and validation metrics, including:
+
+- Training box loss
+- Training classification loss
+- Training distribution focal loss
+- Validation box loss
+- Validation classification loss
+- Validation distribution focal loss
+- Precision
+- Recall
+- F1-score
+- mAP@50
+- mAP@50–95
+- Learning rates
+- Cumulative training time
+- Per-epoch wall time
+
+Training evidence:
+
+```text
+results/training/
+├── all_models_epoch_metrics.csv
+├── training_summary.csv
+├── yolov8n_epoch_metrics.csv
+├── yolov8s_epoch_metrics.csv
+├── yolo11n_epoch_metrics.csv
+└── yolo11s_epoch_metrics.csv
+```
+## Training and Evaluation Graphs
+Training curves and evaluation visualizations are available in:
+results/graphs/
+
+The directory contains:
+- Training/validation result plots
+- Confusion matrices
+- Normalized confusion matrices
+for all four candidate models.
+
+## Consolidated Experimental Evidence
+A machine-readable summary of the complete food-detection experiment is available at:
+results/food_detection_experimental_evidence.json
+
+### This file consolidates:
+- Training metrics
+- Best epoch
+- Training duration
+- Model comparison
+- Independent validation results
+- Final test results
+- Experimental protocol
+- Validation-to-test comparison
+- Selected final model
+## Evaluation Structure
+The evaluation was separated into three stages:
+1. Training evidence — epoch-by-epoch metrics recorded during model training.
+2. Clean validation evaluation — used for model comparison and selection.
+3. Final test evaluation — performed on the untouched test split after model selection.
+The final selected model is YOLO11s.
+
+## Final Test Evidence
+The final YOLO11s model was evaluated on:
+- 353 clean test images
+- 364 annotated test instances
+### Final test results:
+| Metric | YOLO11s |
+|---|---:|
+| Precision | 0.6344 |
+| Recall | 0.6533 |
+| F1-score | 0.6437 |
+| mAP@50 | 0.7198 |
+| mAP@50–95 | 0.4378 |
+| Inference time | 9.873 ms/image |
+
+The complete test evaluation is stored in:
+results/yolo11s_test_clean_eval_summary.json
+
+The test split was not used during training or model selection.
+
+
 # 📈 Current Project Progress
 Completed
 - [x] Project architecture defined
@@ -254,6 +346,7 @@ Completed
 - [x] Backend development started
 - [x] Frontend development started
 - [x] Project pushed to GitHub
+- [x] Add model evaluation visualizations
       
 ## In Progress
 - [ ] Integrate YOLO11s with the backend
@@ -265,7 +358,7 @@ Completed
 - [ ] Integrate fitness/activity information
 - [ ] Integrate menu and food image understanding
 - [ ] Perform complete end-to-end evaluation
-- [ ] Add model evaluation visualizations
+
 
 # 🔬 Research Direction
 The project investigates an integrated approach combining:
@@ -302,10 +395,31 @@ AI-FITNESS-TRACKER/
 │       └── indian_recipe_nutrition.csv
 ├── models/
 │   └── README.md
-├── results/
-│   ├── model_comparison.csv
-│   ├── model_comparison.json
-│   └── yolo11s_test_clean_eval_summary.json
+├── results/  
+  ├── model_comparison.csv
+  ├── model_comparison.json
+  ├── yolo11s_test_clean_eval_summary.json
+  ├── food_detection_experimental_evidence.json
+  ├── training/
+  │   ├── all_models_epoch_metrics.csv
+  │   ├── training_summary.csv
+  │   ├── yolov8n_epoch_metrics.csv
+  │   ├── yolov8s_epoch_metrics.csv
+  │   ├── yolo11n_epoch_metrics.csv
+  │   └── yolo11s_epoch_metrics.csv
+  └── graphs/
+      ├── yolov8n_results.png
+      ├── yolov8n_confusion_matrix.png
+      ├── yolov8n_confusion_matrix_normalized.png
+      ├── yolov8s_results.png
+      ├── yolov8s_confusion_matrix.png
+      ├── yolov8s_confusion_matrix_normalized.png
+      ├── yolo11n_results.png
+      ├── yolo11n_confusion_matrix.png
+      ├── yolo11n_confusion_matrix_normalized.png
+      ├── yolo11s_results.png
+      ├── yolo11s_confusion_matrix.png
+      └── yolo11s_confusion_matrix_normalized.png
 ├── .gitignore
 └── README.md
 ```
