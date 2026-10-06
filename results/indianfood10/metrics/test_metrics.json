@@ -1,0 +1,26 @@
+{
+    "dataset": "IndianFood10",
+    "model": "YOLO11s",
+    "test_images": 574,
+    "test_instances": 1069,
+    "project_detection_accuracy": 0.942002,
+    "accuracy_definition": "Correctly matched ground-truth objects divided by total ground-truth objects, using IoU >= 0.50 and confidence >= 0.25.",
+    "precision": 0.932401,
+    "recall": 0.915544,
+    "f1": 0.923895,
+    "mAP50": 0.954381,
+    "mAP50_95": 0.765092,
+    "inference_ms_per_image": 9.797134811860467,
+    "preprocess_ms_per_image": 1.2662684738665477,
+    "postprocess_ms_per_image": 1.853507876297738,
+    "epochs": 50,
+    "training_wall_clock": "01:42:49.06",
+    "hardware": {
+        "gpu": "NVIDIA Tesla T4",
+        "gpu_memory": "14912 MiB",
+        "cuda": "12.8",
+        "pytorch": "2.11.0+cu128",
+        "ultralytics": "8.4.171",
+        "python": "3.13.15"
+    }
+}

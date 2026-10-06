@@ -1,0 +1,11 @@
+{
+    "wall_time_seconds": 6169.061,
+    "wall_time_formatted": "01:42:49.06",
+    "model": "yolo11s.pt",
+    "epochs_max": 50,
+    "patience": 15,
+    "image_size": 640,
+    "batch_size": 16,
+    "seed": 0,
+    "device": "Tesla T4"
+}
